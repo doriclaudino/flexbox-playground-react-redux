@@ -1,1 +1,1 @@
-export const SCREEN_CHILD_CLICKED = "SAVE_CHILD_CLIKED";
+export const ADD_ZOOM_ID = "ADD_ZOOM_ID";

@@ -15,7 +15,7 @@ CodeArea.defaultProps = {
 };
 
 CodeArea.propTypes = {
-  code: PropTypes.arrayOf(PropTypes.object).isRequired
+  code: PropTypes.arrayOf(PropTypes.object)
 };
 
 export default CodeArea;

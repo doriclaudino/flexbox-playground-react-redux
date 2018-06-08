@@ -1,6 +1,12 @@
-import * as types from "/types";
+import * as types from "./types";
 
-export const onChildCliked = id => ({
-  type: types.SCREEN_CHILD_CLICKED,
-  id
-});
+/**
+ * stop the button action propagation to parent Divs
+ */
+export const onChildClick = (id, htmlElement) => {
+  htmlElement.stopPropagation();
+  return {
+    type: types.ADD_ZOOM_ID,
+    id: id
+  };
+};
