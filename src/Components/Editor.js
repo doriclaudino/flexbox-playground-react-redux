@@ -2,11 +2,12 @@ import React from "react";
 import EditorScreen from "./EditorScreen";
 import EditorControls from "./EditorControls";
 
-const Editor = ({ children }) => {
+const Editor = props => {
+  console.log(props);
   return (
     <div className="flex border editor">
-      <EditorScreen onScreenObjectClick>{children}</EditorScreen>
-      <EditorControls code={children} />
+      <EditorScreen {...props}>{props.children}</EditorScreen>
+      <EditorControls code={props.items} />
     </div>
   );
 };

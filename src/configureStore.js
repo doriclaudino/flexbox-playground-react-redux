@@ -8,14 +8,10 @@ const random = i => {
 
 const configureStore = () => {
   const persistedState = {
-    children: [
+    items: [
       {
         id: 1,
         className: "flex half-size hover-effect",
-        onClick: function(e) {
-          e.stopPropagation();
-          console.log(e.target.id);
-        },
         style: { backgroundColor: random(3) },
         children: [
           {

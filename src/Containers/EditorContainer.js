@@ -1,44 +1,22 @@
 import React from "react";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
 import { onChildClick } from "../Actions";
 import Editor from "../Components/Editor";
-import Child from "../Components/Child";
-
-const mapChildren = (children = [], dispatch, onclick) => {
-  /*combined destructuring, JSX Spread */
-  return children.map(({ id, ...child }) => {
-    return (
-      <Child
-        key={id}
-        id={id}
-        {...child}
-        /**if statment
-         * children={child.children && mapChildren(child.children)}
-         */
-        onClick={e => onclick(id, e, dispatch)}
-        children={mapChildren(child.children, dispatch, onclick)}
-      />
-    );
-  });
-};
 
 const mapStateToProps = (state, ownProp) => ({
-  children: mapChildren(
-    state.children,
-    ownProp.store.dispatch,
-    onChildClickHandler
-  )
+  items: state.items
 });
 
-/**
- * (id) for save the id
- * (e) for stop propagation
- * (dispatch) reference to callBack
- */
-const onChildClickHandler = (id, e, dispatchRef) => {
-  dispatchRef(onChildClick(id, e));
+const mapDispatchToProps = dispatch => {
+  return bindActionCreators(
+    {
+      onChildClick: onChildClick
+    },
+    dispatch
+  );
 };
 
-const EditorContainer = connect(mapStateToProps, null)(Editor);
+const EditorContainer = connect(mapStateToProps, mapDispatchToProps)(Editor);
 
 export default EditorContainer;
