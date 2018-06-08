@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import { onChildClick } from "../Actions";
+import * as action from "../Actions";
 import Editor from "../Components/Editor";
 
 const mapStateToProps = (state, ownProp) => ({
@@ -11,7 +11,8 @@ const mapStateToProps = (state, ownProp) => ({
 const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
-      onChildClick: onChildClick
+      onChildClick: action.onChildClick,
+      onChildDoubleClick: action.onChildDoubleClick
     },
     dispatch
   );

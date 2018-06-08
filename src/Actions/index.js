@@ -7,7 +7,16 @@ export const onChildClick = (id, htmlElement) => {
   console.log("clicked:" + id);
   htmlElement.stopPropagation();
   return {
-    type: types.ADD_ZOOM_ID,
+    type: types.SAVE_CLICKED_ID,
+    id: id
+  };
+};
+
+export const onChildDoubleClick = (id, htmlElement) => {
+  console.log("clicked:" + id);
+  htmlElement.stopPropagation();
+  return {
+    type: types.SAVE_ZOOM_ID,
     id: id
   };
 };
