@@ -1,0 +1,61 @@
+.controls {
+  flex-grow: 1;
+  flex-direction: column;
+  min-width: 30%;
+  max-width: 50%;
+  margin-left: 1px;
+}
+
+.resize {
+  resize: horizontal;
+  overflow: auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.screen {
+  box-sizing: border-box;
+  min-width: 30%;
+  width: 70%;
+  border: 0.1px solid rgb(169, 169, 169);
+}
+
+.editor {
+  height: 300px;
+  width: 100%;
+  justify-content: space-between;
+}
+
+body {
+  padding: 10px;
+}
+
+.hover-effect:hover {
+  border: 0.1px dashed black;
+  opacity: 0.5;
+  cursor: zoom-in;
+}
+
+.no-resize {
+  resize: none;
+}
+
+.border {
+  border: 0.1px solid rgb(169, 169, 169);
+}
+
+.border-box {
+  box-sizing: border-box;
+}
+
+.full-size {
+  width: 100%;
+  height: 100%;
+}
+
+.half-size {
+  width: 50%;
+  height: 50%;
+}

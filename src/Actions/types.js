@@ -1,0 +1,1 @@
+export const SCREEN_CHILD_CLICKED = "SAVE_CHILD_CLIKED";
