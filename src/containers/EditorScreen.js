@@ -1,8 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
-import * as action from "../Actions";
-import Editor from "../Components/Editor";
+import * as action from "../actions";
+import EditorScreen from "../components/EditorScreen";
 
 const filterById = (items, id) => {
   var result;
@@ -39,15 +39,10 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
       onChildClick: action.onChildClick,
-      onChildDoubleClick: action.onChildDoubleClick,
-      onRootClick: action.onRootClick,
-      onAddChildClick: action.onAddChildClick,
-      onDelChildClick: action.onDelChildClick
+      onChildDoubleClick: action.onChildDoubleClick
     },
     dispatch
   );
 };
 
-const EditorContainer = connect(mapStateToProps, mapDispatchToProps)(Editor);
-
-export default EditorContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(EditorScreen);

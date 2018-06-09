@@ -1,5 +1,5 @@
 import { combineReducers } from "redux";
-import * as types from "../Actions/types";
+import * as types from "../actions/types";
 import v4 from "uuid";
 
 export const editorReducer = (state = undefined, action) => {
@@ -36,7 +36,8 @@ export const editorReducer = (state = undefined, action) => {
       return {
         ...state,
         ZOOM_ID: state.ZOOM_ID === state.CLICKED_ID ? undefined : state.ZOOM_ID,
-        items: delElementById(state.items, state.CLICKED_ID)
+        items: delElementById(state.items, state.CLICKED_ID),
+        CLICKED_ID: undefined
       };
     }
     default:

@@ -1,5 +1,4 @@
 import React from "react";
-import Child from "../Components/Child";
 
 const mapper = (items = [], onClick, onDoubleClick) => {
   return items.map(item => {

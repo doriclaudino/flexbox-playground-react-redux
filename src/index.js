@@ -1,8 +1,9 @@
 import React from "react";
 import { render } from "react-dom";
+import { Provider } from "react-redux";
 import * as style from "./styles/styles.css";
 import configureStore from "./configureStore";
-import EditorContainer from "./Containers/EditorContainer";
+import Editor from "./components/Editor";
 
 const store = configureStore();
 store.subscribe(() => {
@@ -10,5 +11,9 @@ store.subscribe(() => {
 });
 window.store = store;
 
-const App = () => <EditorContainer store={store} />;
+const App = () => (
+  <Provider store={store}>
+    <Editor />
+  </Provider>
+);
 render(<App />, document.getElementById("root"));
