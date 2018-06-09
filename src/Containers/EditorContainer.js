@@ -12,7 +12,10 @@ const mapDispatchToProps = dispatch => {
   return bindActionCreators(
     {
       onChildClick: action.onChildClick,
-      onChildDoubleClick: action.onChildDoubleClick
+      onChildDoubleClick: action.onChildDoubleClick,
+      onRootClick: action.onRootClick,
+      onAddChildClick: action.onAddChildClick,
+      onDelChildClick: action.onDelChildClick
     },
     dispatch
   );

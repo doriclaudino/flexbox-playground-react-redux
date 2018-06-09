@@ -20,3 +20,7 @@ export const onChildDoubleClick = (id, htmlElement) => {
     id: id
   };
 };
+
+export const onRootClick = () => ({ type: types.ROOT_CLICK });
+export const onAddChildClick = () => ({ type: types.ADD_CHILD });
+export const onDelChildClick = () => ({ type: types.DEL_CHILD });

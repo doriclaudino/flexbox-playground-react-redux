@@ -7,7 +7,7 @@ const Editor = props => {
   return (
     <div className="flex border editor">
       <EditorScreen {...props}>{props.children}</EditorScreen>
-      <EditorControls code={props.items} />
+      <EditorControls code={props.items} {...props} />
     </div>
   );
 };

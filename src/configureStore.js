@@ -1,5 +1,6 @@
 import { createStore } from "redux";
 import { editorReducer } from "./Reducers";
+import v4 from "uuid";
 
 const random = i => {
   let array = ["#6b5b95", "#feb236", "#d64161", "#ff7b25"];
@@ -8,6 +9,12 @@ const random = i => {
 
 const configureStore = () => {
   const persistedState = {
+    base_child: {
+      id: v4(),
+      className: "flex half-size hover-effect",
+      style: { backgroundColor: random(0) },
+      children: []
+    },
     items: [
       {
         id: 1,
