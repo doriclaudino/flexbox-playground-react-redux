@@ -1,6 +1,7 @@
 import { combineReducers } from "redux";
 import * as types from "../actions/types";
 import v4 from "uuid";
+import randomColor from "randomcolor";
 
 export const editorReducer = (state = undefined, action) => {
   console.log("dispatched: " + action.type + " id:" + action.id);
@@ -28,6 +29,7 @@ export const editorReducer = (state = undefined, action) => {
         ...state,
         items: addELementById(state.items, state.CLICKED_ID, {
           ...state.base_child,
+          style: { backgroundColor: randomColor() },
           id: v4()
         })
       };
