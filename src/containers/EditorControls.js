@@ -15,4 +15,8 @@ const mapDispatchToProps = dispatch => {
   );
 };
 
-export default connect(null, mapDispatchToProps)(EditorControls);
+const mapStateToProps = state => ({
+  disableRootButton: !state.ZOOM_ID
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(EditorControls);

@@ -5,13 +5,16 @@ const EditorControls = ({
   code,
   onRootClick,
   onAddChildClick,
-  onDelChildClick
+  onDelChildClick,
+  disableRootButton
 }) => {
   return (
     <div className="controls flex border-box">
       <CodeArea code={code} />
       <div>
-        <button onClick={onRootClick}>root</button>
+        <button onClick={onRootClick} disabled={disableRootButton}>
+          root
+        </button>
         <button onClick={onAddChildClick}>add</button>
         <button onClick={onDelChildClick}>del</button>
       </div>
