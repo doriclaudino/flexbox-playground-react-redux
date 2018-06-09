@@ -6,7 +6,8 @@ const EditorControls = ({
   onRootClick,
   onAddChildClick,
   onDelChildClick,
-  disableRootButton
+  disableRootButton,
+  disableDelButton
 }) => {
   //console.log(`code: ${JSON.stringify(code)}`);
   return (
@@ -17,7 +18,9 @@ const EditorControls = ({
           root
         </button>
         <button onClick={onAddChildClick}>add</button>
-        <button onClick={onDelChildClick}>del</button>
+        <button onClick={onDelChildClick} disabled={disableDelButton}>
+          del
+        </button>
       </div>
     </div>
   );
