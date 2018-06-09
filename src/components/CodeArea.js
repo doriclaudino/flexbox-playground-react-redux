@@ -3,16 +3,12 @@ import { PropTypes } from "prop-types";
 
 const CodeArea = props => {
   return (
-    <textarea
-      className="no-resize full-size border-box"
-      defaultValue={props.code}
-      value={props.code}
-    />
+    <textarea className="no-resize full-size border-box" value={props.code} />
   );
 };
 
 CodeArea.defaultProps = {
-  code: "/** select an element */"
+  code: "/** [clickOn] or [add] an element */"
 };
 
 CodeArea.propTypes = {

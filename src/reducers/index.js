@@ -26,14 +26,25 @@ export const editorReducer = (state = undefined, action) => {
       };
     }
     case types.ADD_CHILD: {
-      return {
-        ...state,
-        items: addELementById(state.items, state.CLICKED_ID, {
-          ...state.base_child,
-          style: { backgroundColor: randomColor() },
-          id: v4()
-        })
+      const newElement = {
+        ...state.base_child,
+        style: { backgroundColor: randomColor() },
+        id: v4(),
+        items: []
       };
+
+      //empty insert
+      if (!state.items.length) {
+        return {
+          ...state,
+          items: [newElement]
+        };
+      } else {
+        return {
+          ...state,
+          items: addELementById(state.items, state.CLICKED_ID, newElement)
+        };
+      }
     }
     case types.DEL_CHILD: {
       return {
