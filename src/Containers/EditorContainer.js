@@ -4,8 +4,31 @@ import { bindActionCreators } from "redux";
 import * as action from "../Actions";
 import Editor from "../Components/Editor";
 
+const filterById = (items, id) => {
+  var result;
+  items.some(item => {
+    if (item.id === id) {
+      return (result = item);
+    }
+    if (item.children) {
+      return (result = filterById(item.children, id));
+    }
+  });
+  return result;
+};
+
+const filterItems = state => {
+  let result;
+  if (state.ZOOM_ID) {
+    result = [filterById(state.items, state.ZOOM_ID)];
+  } else {
+    result = state.items;
+  }
+  return result;
+};
+
 const mapStateToProps = (state, ownProp) => ({
-  items: state.items
+  items: filterItems(state)
 });
 
 const mapDispatchToProps = dispatch => {

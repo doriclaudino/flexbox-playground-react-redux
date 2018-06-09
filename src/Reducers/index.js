@@ -20,7 +20,7 @@ export const editorReducer = (state = undefined, action) => {
     case types.ROOT_CLICK: {
       return {
         ...state,
-        ROOT_CLICK: true
+        ZOOM_ID: undefined
       };
     }
     case types.ADD_CHILD: {
@@ -35,6 +35,7 @@ export const editorReducer = (state = undefined, action) => {
     case types.DEL_CHILD: {
       return {
         ...state,
+        ZOOM_ID: state.ZOOM_ID === state.CLICKED_ID ? undefined : state.ZOOM_ID,
         items: delElementById(state.items, state.CLICKED_ID)
       };
     }
@@ -62,3 +63,16 @@ let delElementById = (items, id) => {
     } else return 0;
   });
 };
+
+function filterById(items, id) {
+  var result;
+  items.some(item => {
+    if (item.id === id) {
+      return (result = item);
+    }
+    if (item.children) {
+      return (result = filterById(item.children, id));
+    }
+  });
+  return result;
+}
