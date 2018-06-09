@@ -21,6 +21,7 @@ export const editorReducer = (state = undefined, action) => {
     case types.ROOT_CLICK: {
       return {
         ...state,
+        CLICKED_ID: undefined,
         ZOOM_ID: undefined
       };
     }

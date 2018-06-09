@@ -8,9 +8,10 @@ const EditorControls = ({
   onDelChildClick,
   disableRootButton
 }) => {
+  //console.log(`code: ${JSON.stringify(code)}`);
   return (
     <div className="controls flex border-box">
-      <CodeArea code={code} />
+      <CodeArea code={JSON.stringify(code)} />
       <div>
         <button onClick={onRootClick} disabled={disableRootButton}>
           root

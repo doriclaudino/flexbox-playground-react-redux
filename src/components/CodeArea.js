@@ -6,16 +6,17 @@ const CodeArea = props => {
     <textarea
       className="no-resize full-size border-box"
       defaultValue={props.code}
+      value={props.code}
     />
   );
 };
 
 CodeArea.defaultProps = {
-  code: "/**empty */"
+  code: "/** select an element */"
 };
 
 CodeArea.propTypes = {
-  code: PropTypes.arrayOf(PropTypes.object)
+  code: PropTypes.string
 };
 
 export default CodeArea;
