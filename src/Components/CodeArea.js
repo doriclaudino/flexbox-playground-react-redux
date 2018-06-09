@@ -5,7 +5,7 @@ const CodeArea = props => {
   return (
     <textarea
       className="no-resize full-size border-box"
-      defaultValue={JSON.stringify(props.code)}
+      defaultValue={props.code}
     />
   );
 };

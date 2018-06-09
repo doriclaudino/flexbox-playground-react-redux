@@ -1,44 +1,53 @@
 import { createStore } from "redux";
 import { editorReducer } from "./Reducers";
 import v4 from "uuid";
-
-const random = i => {
-  let array = ["#6b5b95", "#feb236", "#d64161", "#ff7b25"];
-  return array[i];
-};
+import randomColor from "randomcolor";
 
 const configureStore = () => {
   const persistedState = {
     base_child: {
       id: v4(),
       className: "flex half-size hover-effect",
-      style: { backgroundColor: random(0) },
-      children: []
+      style: { backgroundColor: randomColor() },
+      items: []
     },
     items: [
       {
-        id: 1,
+        id: v4(),
         className: "flex half-size hover-effect",
-        style: { backgroundColor: random(3) },
-        children: [
+        style: { backgroundColor: randomColor() },
+        items: [
           {
-            id: 3,
+            id: v4(),
             className: "flex half-size hover-effect",
-            style: { backgroundColor: random(1) },
-            children: []
+            style: { backgroundColor: randomColor() },
+            items: [
+              {
+                id: v4(),
+                className: "flex half-size hover-effect",
+                style: { backgroundColor: randomColor() },
+                items: []
+              }
+            ]
           }
         ]
       },
       {
-        id: 2,
+        id: v4(),
         className: "flex half-size hover-effect",
-        style: { backgroundColor: random(0) },
-        children: [
+        style: { backgroundColor: randomColor() },
+        items: [
           {
-            id: 4,
+            id: v4(),
             className: "flex half-size hover-effect",
-            style: { backgroundColor: random(2) },
-            children: []
+            style: { backgroundColor: randomColor() },
+            items: []
+          },
+          {
+            id: v4(),
+            className: "flex half-size hover-effect",
+            style: { backgroundColor: randomColor() },
+            items: []
           }
         ]
       }

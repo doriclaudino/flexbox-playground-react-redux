@@ -1,21 +1,21 @@
 import React from "react";
 import Child from "../Components/Child";
 
-const mapChildren = (children = [], onClick, onDoubleClick) => {
-  /*combined destructuring, JSX Spread */
-  return children.map(({ id, ...child }) => {
+const mapper = (items = [], onClick, onDoubleClick) => {
+  return items.map(item => {
     return (
-      <Child
-        key={id}
-        id={id}
-        {...child}
-        /**if statment
-         * children={child.children && mapChildren(child.children)}
-         */
-        onClick={e => onClick(id, e)}
-        onDoubleClick={e => onDoubleClick(id, e)}
-        children={mapChildren(child.children, onClick, onDoubleClick)}
-      />
+      <div
+        key={item.id}
+        id={item.id}
+        style={item.style}
+        className={item.className}
+        onClick={e => onClick(item.id, e)}
+        onDoubleClick={e => onDoubleClick(item.id, e)}
+      >
+        {item.items && item.items.length
+          ? mapper(item.items, onClick, onDoubleClick)
+          : ""}
+      </div>
     );
   });
 };
@@ -28,7 +28,7 @@ const EditorScreen = ({
 }) => {
   return (
     <div className="flex screen resize">
-      {mapChildren(items, onChildClick, onChildDoubleClick)}
+      {mapper(items, onChildClick, onChildDoubleClick)}
       {children}
     </div>
   );

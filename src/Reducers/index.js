@@ -47,9 +47,9 @@ export const editorReducer = (state = undefined, action) => {
 let addELementById = (items, id, newELement) => {
   return items.map(item => {
     if (item.id === id) {
-      item.children.push(newELement);
+      item.items.push(newELement);
     } else {
-      item.children = addELementById(item.children, id, newELement);
+      item.items = addELementById(item.items, id, newELement);
     }
     return item;
   });
@@ -58,7 +58,7 @@ let addELementById = (items, id, newELement) => {
 let delElementById = (items, id) => {
   return items.filter(item => {
     if (item.id !== id) {
-      item.children = delElementById(item.children, id);
+      item.items = delElementById(item.items, id);
       return item;
     } else return 0;
   });
@@ -70,8 +70,8 @@ function filterById(items, id) {
     if (item.id === id) {
       return (result = item);
     }
-    if (item.children) {
-      return (result = filterById(item.children, id));
+    if (item.items) {
+      return (result = filterById(item.items, id));
     }
   });
   return result;

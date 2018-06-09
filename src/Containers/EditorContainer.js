@@ -10,8 +10,8 @@ const filterById = (items, id) => {
     if (item.id === id) {
       return (result = item);
     }
-    if (item.children) {
-      return (result = filterById(item.children, id));
+    if (item.items) {
+      return (result = filterById(item.items, id));
     }
   });
   return result;
@@ -20,7 +20,11 @@ const filterById = (items, id) => {
 const filterItems = state => {
   let result;
   if (state.ZOOM_ID) {
-    result = [filterById(state.items, state.ZOOM_ID)];
+    result = filterById(state.items, state.ZOOM_ID);
+
+    //could return indefined
+    if (!result) result = state.items;
+    else result = [result];
   } else {
     result = state.items;
   }
