@@ -31,7 +31,8 @@ const mapDispatchToProps = dispatch => {
 const mapStateToProps = state => ({
   disableRootButton: !state.ZOOM_ID,
   code: getStyleById(state.items, state.CLICKED_ID),
-  disableDelButton: !state.items.length || !state.CLICKED_ID
+  disableDelButton: !state.items.length || !state.CLICKED_ID,
+  disableAddButton: state.items.length && !state.CLICKED_ID
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(EditorControls);
