@@ -8,12 +8,12 @@ const EditorControls = ({
   onDelChildClick,
   disableRootButton,
   disableDelButton,
-  disableAddButton
+  disableAddButton,
+  onUpdateCode
 }) => {
-  //console.log(`code: ${JSON.stringify(code)}`);
   return (
     <div className="controls flex border-box">
-      <CodeArea code={JSON.stringify(code)} />
+      <CodeArea onUpdateCode={onUpdateCode} code={code} updateInterval={200} />
       <div>
         <button onClick={onRootClick} disabled={disableRootButton}>
           root

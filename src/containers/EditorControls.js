@@ -22,7 +22,8 @@ const mapDispatchToProps = dispatch => {
     {
       onRootClick: action.onRootClick,
       onAddChildClick: action.onAddChildClick,
-      onDelChildClick: action.onDelChildClick
+      onDelChildClick: action.onDelChildClick,
+      onUpdateCode: action.onUpdateCode
     },
     dispatch
   );

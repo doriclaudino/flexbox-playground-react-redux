@@ -54,9 +54,26 @@ export const editorReducer = (state = undefined, action) => {
         CLICKED_ID: undefined
       };
     }
+    case types.UPDATE_CODE: {
+      return {
+        ...state,
+        items: updateELementById(state.items, state.CLICKED_ID, action.code)
+      };
+    }
     default:
       return state;
   }
+};
+
+let updateELementById = (items, id, newStyle) => {
+  return items.map(item => {
+    if (item.id === id) {
+      item.style = newStyle;
+    } else {
+      item.items = updateELementById(item.items, id, newStyle);
+    }
+    return item;
+  });
 };
 
 let addELementById = (items, id, newELement) => {
