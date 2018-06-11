@@ -1,27 +1,44 @@
 import React from "react";
+import CodeMirror1 from "react-codemirror";
+import { Controlled as CodeMirror } from 'react-codemirror2';
+require('codemirror/mode/javascript/javascript');
+require('codemirror/lib/codemirror.css');
+require('codemirror/theme/neo.css');
 
 class CodeArea extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      textAreaValue: props.code,
+      code: props.code,
       updateInterval: props.updateInterval || 100
     };
   }
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({ textAreaValue: JSON.stringify(nextProps.code) });
+  removeQuotes = (json) => {
+    return !json ? json :
+      json.replace(/\"([^(\")"]+)\":/g, "$1:") || "";
   }
 
-  setTextAreaValue = textAreaValue => {
-    this.setState({ textAreaValue });
+  addQuotes = (json) => {
+    return !json ? json : json.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2": ') || "";
+  }
+
+  componentWillReceiveProps(nextProps) {
+    let json = JSON.stringify(nextProps.code, undefined, 4);
+    json = this.removeQuotes(json);
+    this.setState({ code: json });
+  }
+
+  setcode = code => {
+    this.setState({ code });
   };
 
-  onKeyUpHandler = () => {
+  timeOutHandler = () => {
     clearTimeout(this.timeout);
     this.timeout = setTimeout(() => {
-      if (this.parser(this.state.textAreaValue)) {
-        this.props.onUpdateCode(this.parser(this.state.textAreaValue));
+      let json = this.addQuotes(this.state.code);
+      if (this.parser(json)) {
+        this.props.onUpdateCode(this.parser(json));
       }
     }, this.state.updateInterval);
   };
@@ -37,17 +54,20 @@ class CodeArea extends React.Component {
 
   render() {
     return (
-      <textarea
-        className="no-resize full-size border-box"
-        value={this.state.textAreaValue}
-        onChange={e => {
-          this.setTextAreaValue(e.target.value);
+      <CodeMirror
+        value={this.state.code}
+        options={{
+          mode: 'javascript',
+          theme: 'neo',
+          lineNumbers: true
         }}
-        onKeyUp={e => {
-          this.onKeyUpHandler();
+        onBeforeChange={(editor, data, code) => {
+          this.setcode(code)
         }}
-      />
-    );
+        onChange={(editor, data, value) => {
+          this.timeOutHandler();
+        }}
+      />)
   }
 }
 
