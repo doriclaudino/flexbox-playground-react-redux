@@ -2,7 +2,12 @@
   "name": "flexbox-sandbox-react-redux",
   "version": "1.0.0",
   "description": "flexbox sandbox using react/redux",
-  "keywords": ["redux", "flexbox", "playground", "react"],
+  "keywords": [
+    "redux",
+    "flexbox",
+    "playground",
+    "react"
+  ],
   "main": "src/index.js",
   "dependencies": {
     "lodash.throttle": "4.1.1",
