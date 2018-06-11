@@ -7,7 +7,6 @@ class CodeArea extends React.Component {
       textAreaValue: props.code,
       updateInterval: props.updateInterval || 100
     };
-    this.timeout;
   }
 
   componentWillReceiveProps(nextProps) {

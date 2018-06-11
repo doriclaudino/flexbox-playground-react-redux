@@ -1,4 +1,3 @@
-import { combineReducers } from "redux";
 import * as types from "../actions/types";
 import v4 from "uuid";
 import randomColor from "randomcolor";
@@ -95,16 +94,3 @@ let delElementById = (items, id) => {
     } else return 0;
   });
 };
-
-function filterById(items, id) {
-  var result;
-  items.some(item => {
-    if (item.id === id) {
-      return (result = item);
-    }
-    if (item.items) {
-      return (result = filterById(item.items, id));
-    }
-  });
-  return result;
-}
