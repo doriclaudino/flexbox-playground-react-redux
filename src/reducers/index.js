@@ -27,7 +27,7 @@ export const editorReducer = (state = undefined, action) => {
     case types.ADD_CHILD: {
       const newElement = {
         ...state.base_child,
-        style: { backgroundColor: randomColor() },
+        style: { ...state.base_child.style, backgroundColor: randomColor() },
         id: v4(),
         items: []
       };
