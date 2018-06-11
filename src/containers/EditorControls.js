@@ -1,4 +1,3 @@
-import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as action from "../actions";
@@ -13,6 +12,7 @@ const getStyleById = (items, id) => {
     if (item.items) {
       return (result = getStyleById(item.items, id));
     }
+    return 0;
   });
   return result;
 };

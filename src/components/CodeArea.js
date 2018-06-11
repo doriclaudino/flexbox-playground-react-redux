@@ -1,4 +1,5 @@
 import React from "react";
+// eslint-disable-next-line 
 import CodeMirror1 from "react-codemirror";
 import { Controlled as CodeMirror } from 'react-codemirror2';
 require('codemirror/mode/javascript/javascript');
@@ -15,12 +16,17 @@ class CodeArea extends React.Component {
   }
 
   removeQuotes = (json) => {
-    return !json ? json :
+    return !json ?
+      json :
+      // eslint-disable-next-line 
       json.replace(/\"([^(\")"]+)\":/g, "$1:") || "";
   }
 
   addQuotes = (json) => {
-    return !json ? json : json.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2": ') || "";
+    return !json ?
+      json :
+      // eslint-disable-next-line 
+      json.replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:/g, '"$2": ') || "";
   }
 
   componentWillReceiveProps(nextProps) {

@@ -1,4 +1,3 @@
-import React from "react";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as action from "../actions";
@@ -6,13 +5,14 @@ import EditorScreen from "../components/EditorScreen";
 
 const filterById = (items, id) => {
   var result;
-  items.some(item => {
+  items.some((item) => {
     if (item.id === id) {
       return (result = item);
     }
     if (item.items) {
       return (result = filterById(item.items, id));
     }
+    return 0;
   });
   return result;
 };
