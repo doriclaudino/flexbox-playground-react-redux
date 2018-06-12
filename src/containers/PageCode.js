@@ -43,7 +43,11 @@ const handleStyle = (style) => {
 const htmlHeader = (body) => {
     return (
         `<html>
-            <head></head>
+            <head> 
+                <title>
+                    flexbox-playground-react-redux
+                </title>
+            </head>
             <body style="display:flex; border:0px; padding:0px; margin:0px;">
                 ${body}
             </body>
@@ -67,7 +71,7 @@ const mapHtmlBody = (items = []) => {
     });
 };
 
-const mapHtmlCode = (code) => {
+export const mapHtmlCode = (code) => {
     let html = "", body = "";
     body = mapHtmlBody(code).join(" ");
     html = htmlHeader(body);
