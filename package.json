@@ -13,6 +13,7 @@
     "lodash.throttle": "4.1.1",
     "prop-types": "15.6.1",
     "randomcolor": "0.5.3",
+    "re-resizable": "^4.5.0",
     "react": "16.3.2",
     "react-codemirror": "^1.0.0",
     "react-codemirror2": "^5.0.4",

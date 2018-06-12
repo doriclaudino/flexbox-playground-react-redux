@@ -26,7 +26,15 @@ const EditorScreen = ({
   children
 }) => {
   return (
-    <div className="flex screen resize">
+    <div style={{
+      display: "flex",
+      width: "50%",
+      boxSizing: "border-box",
+      minWidth: "50%",
+      minHeight: "50%",
+      flexGrow: 2,
+      border: "0.1px solid rgb(169, 169, 169)"
+    }}>
       {mapper(items, onChildClick, onChildDoubleClick)}
       {children}
     </div>
