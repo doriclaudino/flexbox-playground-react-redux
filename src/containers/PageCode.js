@@ -14,25 +14,25 @@ const htmlHeader = (body) => {
 
 const mapHtmlBody = (items = []) => {
     return items.map(item => {
-        return (
+        let tempHtml =
             `<div
           id=${item.id}
           style=${JSON.stringify(item.style)}
         >
           ${item.items && item.items.length
-                ? mapHtmlBody(item.items)
+                ? mapHtmlBody(item.items).join(" ")
                 : ""}
         </div>`
-        );
+            ;
+        return tempHtml;
     });
 };
 
 const mapHtmlCode = (code) => {
-    console.log(code)
-    let body;
-    body = mapHtmlBody(code);
-    console.log(body)
-    return htmlHeader(body);
+    let html = "", body = "";
+    body = mapHtmlBody(code).join(" ");
+    html = htmlHeader(body);
+    return html;
 }
 
 
