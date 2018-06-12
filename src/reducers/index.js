@@ -28,7 +28,7 @@ export const editorReducer = (state = undefined, action) => {
       const newElement = {
         ...state.base_child,
         style: { ...state.base_child.style, backgroundColor: randomColor() },
-        id: v4(),
+        id: `"${v4()}"`,
         items: []
       };
 
