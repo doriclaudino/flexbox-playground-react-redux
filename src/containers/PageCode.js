@@ -1,11 +1,50 @@
 import { connect } from "react-redux";
 import PageCode from "../components/PageCode";
+import prefix from 'react-prefixer';
+import decamelizeKeys from "decamelize-keys";
+
+var styles = prefix({
+    display: 'flex',
+    transition: 'transform 200ms',
+    backgroundColor: "black"
+});
+
+const removeQuotes = (json) => {
+    return !json ?
+        json :
+        // eslint-disable-next-line 
+        json.replace(/["]/g, '');
+}
+const removeCurlyBraces = (json) => {
+    return !json ?
+        json :
+        // eslint-disable-next-line 
+        json.replace(/[{}]/g, '');
+}
+
+const replaceCommas = (json) => {
+    return !json ?
+        json :
+        // eslint-disable-next-line 
+        json.replace(/[\,]/g, '; ');
+}
+
+const handleStyle = (style) => {
+    let x;
+    x = prefix(style);
+    x = decamelizeKeys(style, "-");
+    x = JSON.stringify(x);
+    x = removeQuotes(x);
+    x = removeCurlyBraces(x);
+    x = replaceCommas(x);
+    return `"${x}"`
+}
 
 const htmlHeader = (body) => {
     return (
         `<html>
             <head></head>
-            <body>
+            <body style="display:flex; border:0px; padding:0px; margin:0px;">
                 ${body}
             </body>
         </html>`
@@ -17,7 +56,7 @@ const mapHtmlBody = (items = []) => {
         let tempHtml =
             `<div
           id=${item.id}
-          style=${JSON.stringify(item.style)}
+          style=${handleStyle(item.style)}
         >
           ${item.items && item.items.length
                 ? mapHtmlBody(item.items).join(" ")
