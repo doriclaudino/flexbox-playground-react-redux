@@ -10,6 +10,7 @@ class ElementCode extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      code: "click or create some elements",
       updateInterval: props.updateInterval || 500
     };
   }
