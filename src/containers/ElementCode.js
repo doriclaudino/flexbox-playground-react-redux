@@ -31,10 +31,6 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(
-  (state) => ({
-    code: getStyleById(state.items,
-      state.CLICKED_ID),
-    readOnly: false
-  }),
+  mapStateToProps,
   mapDispatchToProps
 )(ElementCode);
