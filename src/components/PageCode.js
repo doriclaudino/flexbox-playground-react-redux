@@ -12,6 +12,12 @@ class PageCode extends React.Component {
         this.state = {
             code: props.code
         };
+        this.instance = null;
+    }
+
+    componentDidMount() {
+        // setTimeout(() => {this.instance.refresh()}, 0); // Doesn't work
+        this.instance.refresh();
     }
 
     componentWillReceiveProps(nextProps) {
@@ -24,8 +30,9 @@ class PageCode extends React.Component {
 
     render() {
         return (
-            <div style={{width:"100%", maxHeight:"50%"}}>
+            <div style={{ width: "100%", maxHeight: "50%" }}>
                 <CodeMirror
+                    editorDidMount={editor => { this.instance = editor }}
                     value={this.state.code}
                     options={{
                         mode: 'javascript',

@@ -10,8 +10,7 @@ class ElementCode extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      code: props.code,
-      updateInterval: props.updateInterval || 100
+      updateInterval: props.updateInterval || 500
     };
   }
 

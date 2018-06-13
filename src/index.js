@@ -5,13 +5,9 @@ import { Provider } from "react-redux";
 import * as style from "./styles/styles.css";
 import configureStore from "./configureStore";
 import Editor from "./components/Editor";
+import { loadState, saveState } from './localStorage';
 
 const store = configureStore();
-store.subscribe(() => {
-  console.log("state changed!");
-});
-window.store = store;
-
 const App = () => (
   <Provider store={store}>
     <Editor />
